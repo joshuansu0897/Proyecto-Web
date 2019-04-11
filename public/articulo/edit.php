@@ -25,7 +25,7 @@ if (is_post_request()) {
 } else {
     $articulo = get_articulos_by_id($ida);
     if (getUserId() !== $articulo['idUsuario']){
-
+        redirect_to(url_for('/articulo/show.php?ida=' . $ida . (isset($_GET['id']) ? "&id=" . $_GET['id'] : "")));
     }
 }
 ?>
