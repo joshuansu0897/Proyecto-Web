@@ -33,7 +33,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
         if (isLogin() && isRoot()) {
             echo '<li class="nav-item">
-            <a class="nav-link" href="' . url_for('/usuario/index.php') . '">Usuarios</a>
+            <a class="nav-link" href="' . url_for('/usuario/list.php') . '">Usuarios</a>
         </li>';
         }
 

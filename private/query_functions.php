@@ -116,7 +116,7 @@ function login($user)
 {
     global $db;
 
-    $sql = "SELECT * FROM Usuario ";
+    $sql = "SELECT id, password, level FROM Usuario ";
     $sql .= "WHERE username='" . $user['username'] . "'";
 
     $result = mysqli_query($db, $sql);

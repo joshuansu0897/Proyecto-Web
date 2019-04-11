@@ -1,7 +1,7 @@
 <?php
 
-define("ROOT", 2);
-define("CREATOR", 1);
+define("ROOT", '2');
+define("CREATOR", '1');
 function url_for($script_path)
 {
   // add the leading '/' if not present
@@ -61,12 +61,12 @@ function isLogin()
 
 function isCreator()
 {
-  return (isset($_SESSION["level"]) && $_SESSION["level"] === CREATOR);
+  return (isset($_SESSION["level"]) && $_SESSION["level"] == CREATOR);
 }
 
 function isRoot()
 {
-  return (isset($_SESSION["level"]) && $_SESSION["level"] === ROOT);
+  return (isset($_SESSION["level"]) && $_SESSION["level"] == ROOT);
 }
 
 function getUserId()

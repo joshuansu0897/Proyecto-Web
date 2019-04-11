@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php');
 
-if (isLogin() && isRoot()) {
-    redirect_to(url_for('/staff/index.php'));
+if (!isLogin() && !isRoot()) {
+    redirect_to(url_for('/index.php'));
 }
 
 ?>
@@ -21,6 +21,10 @@ $usuarios = get_all_usuarios();
         <div class="album py-5 bg-light">
 
             <div class="container">
+
+                <form action="<?php echo url_for('/usuario/new.php'); ?>" method="post">
+                    <button type="submit" class="btn btn-primary">Nuevo Usuario</button>
+                </form>
 
                 <table class="table table-hover">
                     <thead>
