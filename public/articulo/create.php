@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if (!isLogin()) {
-    redirect_to(url_for('/staff/index.php'));
+    redirect_to(url_for('/index.php'));
 }
 
 if (is_post_request()) {
