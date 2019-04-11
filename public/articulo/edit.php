@@ -1,11 +1,14 @@
 <?php require_once('../../private/initialize.php');
 
+if (!isLogin()) {
+    redirect_to(url_for('/staff/index.php'));
+}
+
 if (!isset($_GET['ida'])) {
     redirect_to(url_for('/'));
 }
 
 $ida = $_GET['ida'];
-
 
 if (is_post_request()) {
 
@@ -21,6 +24,9 @@ if (is_post_request()) {
     redirect_to(url_for('/articulo/show.php?ida=' . $ida . (isset($_GET['id']) ? "&id=" . $_GET['id'] : "")));
 } else {
     $articulo = get_articulos_by_id($ida);
+    if (getUserId() !== $articulo['idUsuario']){
+
+    }
 }
 ?>
 

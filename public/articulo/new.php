@@ -1,5 +1,9 @@
 <?php require_once('../../private/initialize.php');
 
+if (!isLogin()) {
+    redirect_to(url_for('/staff/index.php'));
+}
+
 if (!isset($_GET['id'])) {
     redirect_to(url_for('/'));
 }
@@ -60,4 +64,4 @@ $id = $_GET['id'];
         });
     </script>
 
-</body> 
+</body>

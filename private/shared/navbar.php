@@ -10,15 +10,38 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
     </a>
     <ul class="navbar-nav">
         <?php foreach ($subjects as $subject) { ?>
-        <li class="nav-item">
-            <a class="nav-link <?php if ($id == $subject['id']) echo "active" ?>" href="<?php echo url_for('/category/show.php?id=' . h(u($subject['id']))); ?>"><?php echo strtoupper($subject['nombre']) ?></a>
-        </li>
-        <?php 
+            <li class="nav-item">
+                <a class="nav-link <?php if ($id == $subject['id']) echo "active" ?>" href="<?php echo url_for('/category/show.php?id=' . h(u($subject['id']))); ?>"><?php echo strtoupper($subject['nombre']) ?></a>
+            </li>
+        <?php
     } ?>
+        <?php
+        if (isLogin() && isRoot()) {
+            echo '<li class="nav-item">
+            <a class="nav-link" href="' . url_for('/category/new.php') . '"><strong>+</strong></a>
+        </li>';
+        }
+        ?>
     </ul>
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo url_for('/category/new.php'); ?>"> <strong>+</strong></a>
-        </li>
+        <?php
+        if (!isLogin()) {
+            echo '<li class="nav-item">
+            <a class="nav-link" href="' . url_for('/auth/login.php') . '">Iniciar sesión</a>
+        </li>';
+        }
+
+        if (isLogin() && isRoot()) {
+            echo '<li class="nav-item">
+            <a class="nav-link" href="' . url_for('/usuario/index.php') . '">Usuarios</a>
+        </li>';
+        }
+
+        if (isLogin()) {
+            echo '<li class="nav-item">
+            <a class="nav-link" href="' . url_for('/auth/logout.php') . '">Cerrar sesión</a>
+        </li>';
+        }
+        ?>
     </ul>
-</nav> 
+</nav>

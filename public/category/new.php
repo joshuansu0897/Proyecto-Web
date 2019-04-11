@@ -1,4 +1,10 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php
+require_once('../../private/initialize.php');
+
+if (!isLogin() && isRoot()) {
+    redirect_to(url_for('/index.php'));
+}
+?>
 
 <?php include(SHARED_PATH . '/head.php'); ?>
 
@@ -25,4 +31,4 @@
 
     <?php include(SHARED_PATH . '/footer.php'); ?>
 
-</body> 
+</body>
