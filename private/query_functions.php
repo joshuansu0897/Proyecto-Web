@@ -130,7 +130,7 @@ function login($user)
         $_SESSION["loggedin"] = true;
         $_SESSION["id"] = $usr['id'];
         $_SESSION["level"] = $usr['level'];
-        
+
         return true;
     } else {
         logout();
@@ -165,4 +165,17 @@ function createUser($user)
         db_disconnect($db);
         exit;
     }
+}
+
+function get_all_usuarios()
+{
+    global $db;
+
+    $sql = "SELECT id, username, level FROM Usuario";
+
+    $result = mysqli_query($db, $sql);
+
+    confirm_result_set($result);
+
+    return $result;
 }
