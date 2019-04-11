@@ -125,7 +125,6 @@ function login($user)
     mysqli_free_result($result);
 
     if (password_verify($user['password'], $usr['password'])) {
-        session_start();
 
         $_SESSION["loggedin"] = true;
         $_SESSION["id"] = $usr['id'];
@@ -140,7 +139,6 @@ function login($user)
 
 function logout()
 {
-    session_start();
     session_destroy();
 }
 
