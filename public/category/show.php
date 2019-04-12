@@ -17,9 +17,15 @@ $articulos = get_all_articulos($id);
 
             <div class="container">
 
-                <form action="<?php echo url_for('/articulo/new.php?id=' . $id); ?>" method="post">
-                    <button type="submit" class="btn btn-primary">Crear Articulo</button>
-                </form>
+                <?php
+                if (isLogin()) {
+                    echo '
+                    <form action="' . url_for('/articulo/new.php?id=' . $id) . '" method="post">
+                        <button type="submit" class="btn btn-primary">Crear Articulo</button>
+                    </form>
+                    ';
+                }
+                ?>
 
                 <?php include(SHARED_PATH . '/showdata.php'); ?>
 
@@ -30,4 +36,4 @@ $articulos = get_all_articulos($id);
 
     <?php include(SHARED_PATH . '/footer.php'); ?>
 
-</body> 
+</body>

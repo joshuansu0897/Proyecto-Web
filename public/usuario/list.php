@@ -41,7 +41,7 @@ $usuarios = get_all_usuarios();
                             <tr>
                                 <th scope="row"><?php echo h($usuario['username']); ?></th>
                                 <td><?php echo h($usuario['id']); ?></td>
-                                <td><?php echo h($usuario['level']); ?></td>
+                                <td><?php echo h($usuario['level'] == 2 ? 'Root' : 'Creator'); ?></td>
                                 <td><a a class="action" href="<?php echo url_for('/usuarios/edit.php?id=' . h(u($usuario['id']))); ?>">Edit</a></td>
                                 <td><a a class="action" href="<?php echo url_for('/usuarios/delete.php?id=' . h(u($usuario['id']))); ?>">Delete</a></td>
                             </tr>

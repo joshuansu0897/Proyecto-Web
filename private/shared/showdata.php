@@ -9,9 +9,16 @@
                         <div class="btn-group">
                             <a href="<?php echo url_for("/articulo/show.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")); ?>" class="btn btn-sm btn-outline-secondary" role="button">View</a>
                             <?php
-                            if ($articulo['id'] === getUserId()) {
+                            if ((isLogin() && $articulo['idUsuario'] === getUserId()) || isRoot()) {
                                 echo '
-                        <a href="' . url_for("/articulo/edit.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")) . '" class="btn btn-sm btn-outline-secondary" role="button">Edit</a>';
+                                    <a href="' . url_for("/articulo/edit.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")) . '" class="btn btn-sm btn-outline-secondary" role="button">Edit</a>
+                                ';
+                            } ?>
+                            <?php
+                            if ((isLogin() && $articulo['idUsuario'] === getUserId()) || isRoot()) {
+                                echo '
+                                    <a href="' . url_for("/articulo/delete.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")) . '" class="btn btn-sm btn-outline-secondary" role="button">Delete</a>
+                                ';
                             } ?>
                         </div>
                         <small class="text-muted">
