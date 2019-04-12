@@ -74,11 +74,12 @@ function getUserId()
   return isset($_SESSION["id"]) ? $_SESSION["id"] : -1;
 }
 
-function errLogin($msg)
+function err($msg)
 {
-  echo '<div class="card-body">
-    <div class="alert alert-danger" role="alert">' .
-    $msg . '        
-    </div>
-</div>';
+  echo '
+  <div class="card-body">
+    <div class="alert alert-danger" role="alert">'
+      . $msg . 
+    '</div>
+  </div>';
 }

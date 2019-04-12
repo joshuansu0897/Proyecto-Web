@@ -52,7 +52,7 @@ if (is_post_request()) {
 
                 <?php
                 if ($err) {
-                    errLogin('invalid username or password.');
+                    err('invalid username or password.');
                 }
                 ?>
 
