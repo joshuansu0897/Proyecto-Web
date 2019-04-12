@@ -165,6 +165,27 @@ function createUser($user)
     }
 }
 
+function update_user($user)
+{
+    global $db;
+    $sql = "UPDATE Usuario SET ";
+    $sql .= "username='" . $user['username'] . "', ";
+    $sql .= "password='" . $user['password'] . "', ";
+    $sql .= "level='" . $user['level'] . "' ";
+    $sql .= "WHERE id='" . $user['id'] . "' ";
+    $sql .= "LIMIT 1 ";
+
+    $res = mysqli_query($db, $sql);
+
+    if ($res) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
 function get_all_usuarios()
 {
     global $db;
@@ -176,4 +197,18 @@ function get_all_usuarios()
     confirm_result_set($result);
 
     return $result;
+}
+
+function get_usuario_by_id($id)
+{
+    global $db;
+
+    $sql = "SELECT id, username, password, level FROM Usuario WHERE id='" . $id . "'";
+
+    $result = mysqli_query($db, $sql);
+
+    $user = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+
+    return $user;
 }
