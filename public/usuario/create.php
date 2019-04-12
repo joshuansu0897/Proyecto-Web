@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if (!isLogin() && !isRoot()) {
-    redirect_to(url_for('/index.php'));
+    indexOrBack();
 }
 
 if (is_post_request()) {
@@ -20,5 +20,5 @@ if (is_post_request()) {
     $new_id = mysqli_insert_id($db);
     redirect_to(url_for('/usuario/list.php'));
 } else {
-    redirect_to(url_for('/'));
+    indexOrBack();
 }

@@ -1,11 +1,11 @@
 <?php require_once('../../private/initialize.php');
 
 if (!isLogin()) {
-    redirect_to(url_for('/index.php'));
+    indexOrBack();
 }
 
 if (!isset($_GET['ida'])) {
-    redirect_to(url_for('/'));
+    indexOrBack();
 }
 
 $ida = $_GET['ida'];
@@ -24,7 +24,7 @@ if (is_post_request()) {
     redirect_to(url_for('/articulo/show.php?ida=' . $ida . (isset($_GET['id']) ? "&id=" . $_GET['id'] : "")));
 } else {
     $articulo = get_articulos_by_id($ida);
-    if (getUserId() !== $articulo['idUsuario']){
+    if (getUserId() !== $articulo['idUsuario']) {
         redirect_to(url_for('/articulo/show.php?ida=' . $ida . (isset($_GET['id']) ? "&id=" . $_GET['id'] : "")));
     }
 }
@@ -48,7 +48,7 @@ if (is_post_request()) {
             <div class="container">
 
                 <a class="back-link" href="javascript:history.go(-1)">&laquo; Back</a>
-                
+
                 <form action="<?php echo url_for('/articulo/edit.php?ida=' . $ida . (isset($_GET['id']) ? "&id=" . $_GET['id'] : "")); ?>" method="post">
                     <div class="form-group">
                         <label for="titulo">Titulo</label>
@@ -82,4 +82,4 @@ if (is_post_request()) {
         });
     </script>
 
-</body> 
+</body>

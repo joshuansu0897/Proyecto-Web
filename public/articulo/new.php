@@ -1,11 +1,11 @@
 <?php require_once('../../private/initialize.php');
 
 if (!isLogin()) {
-    redirect_to(url_for('/index.php'));
+    indexOrBack();
 }
 
 if (!isset($_GET['id'])) {
-    redirect_to(url_for('/'));
+    indexOrBack();
 }
 
 $id = $_GET['id'];

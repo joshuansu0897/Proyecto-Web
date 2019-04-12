@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if (!isLogin()) {
-    redirect_to(url_for('/index.php'));
+    indexOrBack();
 }
 
 if (is_post_request()) {
@@ -19,5 +19,5 @@ if (is_post_request()) {
     $new_id = mysqli_insert_id($db);
     redirect_to(url_for('/articulo/show.php?ida=' . $new_id . "&id=" . $_GET['id']));
 } else {
-    redirect_to(url_for('/'));
+    indexOrBack();
 }

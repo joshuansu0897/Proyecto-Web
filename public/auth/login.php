@@ -10,9 +10,6 @@ if (is_post_request()) {
     $user['username'] = isset($_POST['username']) ? $_POST['username'] : '';
     $user['password'] = isset($_POST['password']) ? $_POST['password'] : '';
 
-    // para encripar el password
-    //echo password_hash($user['password'], PASSWORD_DEFAULT);
-
     if (login($user)) {
         redirect_to(url_for('/index.php'));
     } else {

@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if (!isLogin() && !isRoot()) {
-    redirect_to(url_for('/index.php'));
+    indexOrBack();
 }
 
 if (is_post_request()) {
