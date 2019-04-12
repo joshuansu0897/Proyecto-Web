@@ -74,12 +74,20 @@ function getUserId()
   return isset($_SESSION["id"]) ? $_SESSION["id"] : -1;
 }
 
+function indexOrBack()
+{
+  if (isset($_GET['id']) && $_GET['id'] != 0) {
+    redirect_to(url_for('/category/show.php?id=' . $_GET['id']));
+  }
+  redirect_to(url_for('/index.php'));
+}
+
 function err($msg)
 {
   echo '
   <div class="card-body">
     <div class="alert alert-danger" role="alert">'
-      . $msg . 
+    . $msg .
     '</div>
   </div>';
 }
