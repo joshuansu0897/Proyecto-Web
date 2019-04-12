@@ -19,18 +19,19 @@ if (is_post_request()) {
 
     $usuario['id'] = $idu;
 
-    $usuario['password'] = isset($_POST['password']) ? utf8_encode($_POST['password']) : null;
-    $usuario['level'] = isset($_POST['level']) ? utf8_encode($_POST['level']) : null;
-    $usuario['username'] = isset($_POST['username']) ? $_POST['username'] : null;
+    $usuario['password'] = isset($_POST['password']) ? utf8_encode($_POST['password']) : $user['password'];
+    $usuario['level'] = isset($_POST['level']) ? utf8_encode($_POST['level']) : $user['level'];
+    $usuario['username'] = isset($_POST['username']) ? $_POST['username'] : $user['username'];
 
-    $usuario['password'] = password_hash($usuario['password'], PASSWORD_DEFAULT);
+    if (isset($_POST['password'])) {
+        $usuario['password'] = password_hash($usuario['password'], PASSWORD_DEFAULT);
+    }
 
     if (password_verify($_POST['passwordOld'], $user['password'])) {
         $result = update_user($usuario);
         redirect_to(url_for('/usuario/list.php'));
-    } else {
-        $err = true;
     }
+    $err = true;
 }
 ?>
 
