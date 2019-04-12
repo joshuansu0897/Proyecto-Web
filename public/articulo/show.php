@@ -17,8 +17,6 @@ $articulo = get_articulos_by_id($ida);
 
             <div class="container">
 
-                <a class="back-link" href="javascript:history.go(-1)">&laquo; Back</a>
-
                 <h1><?php echo utf8_decode($articulo['titulo']); ?></h1>
 
                 <?php 
