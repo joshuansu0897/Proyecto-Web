@@ -14,6 +14,7 @@ if (is_post_request()) {
     $articulo['titulo'] = isset($_POST['titulo']) ? utf8_encode($_POST['titulo']) : null;
     $articulo['contenido'] = isset($_POST['contenido']) ? utf8_encode($_POST['contenido']) : null;
     $articulo['img'] = isset($_POST['img']) ? $_POST['img'] : null;
+    $articulo['idUsuario'] = getUserId();
 
     $result = insert_articulo($articulo);
     $new_id = mysqli_insert_id($db);
