@@ -112,6 +112,24 @@ function update_articulo($articulo)
     }
 }
 
+function delete_articulo($id)
+{
+    global $db;
+    $sql = "DELETE FROM Articulo ";
+    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+
+    $res = mysqli_query($db, $sql);
+
+    if ($res) {
+        header('Refresh: 10');
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
 function login($user)
 {
     global $db;
@@ -211,4 +229,20 @@ function get_usuario_by_id($id)
     mysqli_free_result($result);
 
     return $user;
+}
+
+function delete_user($id)
+{
+    global $db;
+    $sql = "DELETE FROM Usuario ";
+    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+
+    $res = mysqli_query($db, $sql);
+
+    if (!$res) {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
 }

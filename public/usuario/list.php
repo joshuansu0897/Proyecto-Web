@@ -43,7 +43,7 @@ $usuarios = get_all_usuarios();
                                 <td><?php echo h($usuario['id']); ?></td>
                                 <td><?php echo h($usuario['level'] == 2 ? 'Root' : 'Creator'); ?></td>
                                 <td><a a class="action" href="<?php echo url_for('/usuario/edit.php?idu=' . h(u($usuario['id']))); ?>">Edit</a></td>
-                                <td><a a class="action" href="<?php echo url_for('/usuario/delete.php?idu=' . h(u($usuario['id']))); ?>">Delete</a></td>
+                                <td><a a class="action" onclick="return confirm('Seguro que quiere borrar este usuario?');" href="<?php echo url_for('/usuario/delete.php?idu=' . h(u($usuario['id']))); ?>">Delete</a></td>
                             </tr>
                         <?php
                     } ?>
