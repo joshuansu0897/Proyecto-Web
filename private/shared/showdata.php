@@ -17,7 +17,7 @@
                             <?php
                             if ((isLogin() && $articulo['idUsuario'] === getUserId()) || isRoot()) {
                                 echo '
-                                    <a onclick="confirm(\'Esta seguro que desea eliminar este articulo?\')" href="' . url_for("/articulo/delete.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")) . '" class="btn btn-sm btn-outline-secondary" role="button">Delete</a>
+                                    <a onclick="return confirm(\'Esta seguro que desea eliminar este articulo?\')" href="' . url_for("/articulo/delete.php?ida=" . $articulo['id'] . (isset($id) ? "&id=" . $id : "")) . '" class="btn btn-sm btn-outline-secondary" role="button">Delete</a>
                                 ';
                             } ?>
                         </div>
